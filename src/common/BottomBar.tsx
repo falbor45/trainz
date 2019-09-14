@@ -22,7 +22,7 @@ const BottomBar: React.FC<Props> = ({
 		<BottomBarWrapper>
 			{
 				bottomBarOptions.map(item => (
-					<BottomBarItem selected={item.path === history.location.pathname} onClick={() => history.push(item.path)}>
+					<BottomBarItem key={item.label} selected={item.path === history.location.pathname} onClick={() => history.push(item.path)}>
 						<div> </div>
 						<img src={item.icon} alt=""/>
 						<span>{item.label}</span>

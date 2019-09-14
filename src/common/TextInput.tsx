@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextInputWrapper } from "./TextInput.style";
 
 interface Props {
@@ -16,9 +16,12 @@ const TextInput: React.FC<Props> = ({
 	placeholder,
 	width
 }: Props) => {
+	const [isFocused, changeFocus] = useState(false);
+
 	return (
-		<TextInputWrapper width={width}>
-			<input value={value} onChange={onChange} type={type} placeholder={placeholder}/>
+		<TextInputWrapper focused={isFocused || !!value} width={width}>
+			<span>{placeholder}</span>
+			<input onFocus={() => changeFocus(true)} onBlur={() => changeFocus(false)} value={value} onChange={onChange} type={type}/>
 		</TextInputWrapper>
 	)
 };

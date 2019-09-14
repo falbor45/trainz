@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface TextInputWrapperProps {
 	width?: string
+	focused: boolean
 }
 
 export const TextInputWrapper = styled.div<TextInputWrapperProps>`
@@ -9,12 +10,22 @@ export const TextInputWrapper = styled.div<TextInputWrapperProps>`
 	width: ${props => props.width || 'auto'};
 	padding: 5px
 	margin-bottom: 8px;
+	& > span {
+		position: absolute;
+		top: ${props => props.focused ? '0' : '50%'};
+		transform: translateY(${props => props.focused ? '0' : '-50%'}) translateX(${props => props.focused ? '0' : '-50%'}) ${props => props.focused && 'scale(0.75)'};
+		left: ${props => props.focused ? '0' : '50%'};
+		margin: 0 auto;
+		transition: .25s;
+		pointer-events: none;
+	}
 	& > input {
+		width: 100%;
 		background: none;
 		border: none;
 		color: ${props => props.theme.lightGray};
 		font-size: 20px;
-		padding: 0 4px 4px;
+		padding: 12px 4px 4px;
 		outline: 0;
 		font-family: inherit;
 		text-align: center;
