@@ -6,8 +6,8 @@ interface ButtonWrapperPropsI {
 
 export const ButtonWrapper = styled.button<ButtonWrapperPropsI>`
 	border: none;
-	background: ${props => props.theme.tertiary};
-	padding: 3px 15px;
+	background: ${props => props.theme.white};
+	padding: 4px 15px;
 	border-radius: 2px;
 	transition: .125s;
 	margin: ${props => props.margin || '8px 0'}

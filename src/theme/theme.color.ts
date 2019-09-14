@@ -1,5 +1,7 @@
 export default {
-	primary: '#0071BC',
-	secondary: '#1E274E',
-	tertiary: '#FA7819'
+	white:"#ffffff",
+	ligthblue: '#0071BC',
+	darkblue: '#1E274E',
+	orange: '#FA7819',
+	lightGray:"#6d6c6c99"
 }

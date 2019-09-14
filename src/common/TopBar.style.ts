@@ -5,7 +5,7 @@ export const TopBarWrapper = styled.div`
 	min-height: 64px;
 	width: 100vw;
 	position: relative;
-	background: ${props => props.theme.primary};
+	background: ${props => props.theme.white};
 	& > img {
 		position: absolute;
 		height: 5vh;
@@ -22,10 +22,10 @@ export const TopBarWrapper = styled.div`
   	position: absolute;
   	left: 0;
   	bottom: 0;
-  	height: 1px;
+  	height: 0;
   	width: 100%;
-  	border-bottom: 3px solid #000000;
-		border-image: linear-gradient(to right, ${props => props.theme.secondary}, ${props => props.theme.primary});
+  	border-bottom: 1.5px solid #000000;
+		border-image: linear-gradient(to right, ${props => props.theme.darkblue}, ${props => props.theme.white});
 		border-image-slice: 1;
   	opacity: 0.4;
 	}
