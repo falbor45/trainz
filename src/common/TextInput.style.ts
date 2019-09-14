@@ -13,6 +13,7 @@ export const TextInputWrapper = styled.div`
 		font-size: 20px;
 		padding: 0 4px 4px;
 		outline: 0;
+		font-family: inherit;
 		&::placeholder {
 			color: ${props => props.theme.lightGray};
 			opacity: 0.9;
