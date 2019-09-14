@@ -3,11 +3,19 @@ import backIcon from './back-icon.svg';
 import gameIcon from './game-icon.svg';
 import rankingIcon from './ranking-icon.svg';
 import statsIcon from './stats-icon.svg';
+import firstPlaceIcon from './first-place-icon.svg';
+import secondPlaceIcon from './second-place-icon.svg';
+import thirdPlaceIcon from './third-place-icon.svg';
+import shieldIcon from './shield-icon.svg';
 
 export {
 	brandLogo,
 	backIcon,
 	gameIcon,
 	rankingIcon,
-	statsIcon
+	statsIcon,
+	firstPlaceIcon,
+	secondPlaceIcon,
+	thirdPlaceIcon,
+	shieldIcon
 }

@@ -1,5 +1,5 @@
-import fooModel from './foo.model';
+import rankingModel from './ranking.model';
 
 export default {
-	fooModel
+	rankingModel
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import { QuizWrapper } from './Quiz.style';
 import Question from "./quiz/Question";
-const Quiz: React.FC = ({
 
-}) => {
+const Quiz: React.FC = () => {
 	return (
 		<QuizWrapper>
 			<Question

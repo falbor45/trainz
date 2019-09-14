@@ -9,6 +9,7 @@ import TopBar from "./common/TopBar";
 import Game from "./views/Game/Game";
 import BottomBar from "./common/BottomBar";
 import Quiz from "./views/Quiz/Quiz";
+import Ranking from "./views/Ranking/Ranking";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
 					<Route path="/" exact component={Main}/>
 					<Route path="/game" component={Game}/>
 					<Route path="/quiz" component={Quiz}/>
+					<Route path="/ranking" component={Ranking}/>
 					<BottomBar/>
 				</Router>
 			</Provider>
