@@ -13,7 +13,8 @@ interface dicI {
 }
 
 const dic: dicI = {
-	'/game': '/'
+	'/game': '/',
+	'/quiz': '/game'
 };
 
 const TopBar: React.FC<Props> = ({

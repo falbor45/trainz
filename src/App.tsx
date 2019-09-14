@@ -8,6 +8,7 @@ import theme from './theme/theme.color';
 import TopBar from "./common/TopBar";
 import Game from "./views/Game/Game";
 import BottomBar from "./common/BottomBar";
+import Quiz from "./views/Quiz/Quiz";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
 					<TopBar/>
 					<Route path="/" exact component={Main}/>
 					<Route path="/game" component={Game}/>
+					<Route path="/quiz" component={Quiz}/>
 					<BottomBar/>
 				</Router>
 			</Provider>
