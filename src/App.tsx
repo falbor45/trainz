@@ -6,14 +6,16 @@ import {store} from "./store"
 import { ThemeProvider } from 'styled-components';
 import theme from './theme/theme.color';
 import TopBar from "./common/TopBar";
+import Game from "./views/Game/Game";
 
 const App: React.FC = () => {
   return (
   	<ThemeProvider theme={theme}>
 			<Provider store={store}>
-				<TopBar/>
 				<Router>
+					<TopBar/>
 					<Route path="/" exact component={Main}/>
+					<Route path="/game" component={Game}/>
 				</Router>
 			</Provider>
 		</ThemeProvider>
