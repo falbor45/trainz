@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {shieldIcon} from "../../assets";
 
 export const RankingWrapper = styled.div`
 	height: 80vh;
@@ -8,10 +7,6 @@ export const RankingWrapper = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	& > div {
-		
-			
-	}
 `;
 
 export const Leaderboard = styled.div`

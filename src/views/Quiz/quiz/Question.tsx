@@ -4,17 +4,19 @@ import { QuestionWrapper } from './Question.style';
 interface answer {
 	text: string
 	id: number
-	questionId: number
+	questionId: number,
 }
 
 interface Props {
 	question: string,
 	answers: [answer, answer, answer, answer]
+	onAnswer: () => void
 }
 
 const Question: React.FC<Props> = ({
 	question,
-	answers
+	answers,
+	onAnswer
 }: Props) => {
 	return (
 		<QuestionWrapper>
@@ -22,7 +24,7 @@ const Question: React.FC<Props> = ({
 			<div>
 				{
 					answers.map(answer => (
-						<div>
+						<div onClick={onAnswer}>
 							<span>{answer.text}</span>
 						</div>
 					))

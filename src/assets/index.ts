@@ -7,6 +7,7 @@ import firstPlaceIcon from './first-place-icon.svg';
 import secondPlaceIcon from './second-place-icon.svg';
 import thirdPlaceIcon from './third-place-icon.svg';
 import shieldIcon from './shield-icon.svg';
+import loadingScreenBackground from './loading-screen-bg.jpg';
 
 export {
 	brandLogo,
@@ -17,5 +18,6 @@ export {
 	firstPlaceIcon,
 	secondPlaceIcon,
 	thirdPlaceIcon,
-	shieldIcon
+	shieldIcon,
+	loadingScreenBackground
 }

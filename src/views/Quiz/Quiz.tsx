@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { QuizWrapper } from './Quiz.style';
 import Question from "./quiz/Question";
+import LoadingScreen from "./quiz/LoadingScreen";
 
 const Quiz: React.FC = () => {
-	return (
+	const [isLoading, changeLoadState] = useState(false);
+	const [finished, changeFinish] = useState(false);
+
+	useEffect(() => {
+		let timeout: any;
+		if (isLoading) {
+			timeout = setTimeout(() => {
+				changeFinish(true);
+			}, 5000 + (Math.floor(Math.random() * 5000)));
+		}
+		return () => clearTimeout(timeout);
+	}, [isLoading]);
+
+	return !isLoading ? (
 		<QuizWrapper>
 			<Question
 				question="Who is the best duud?"
+				onAnswer={() => changeLoadState(!isLoading)}
 				answers={[
 					{
 						id: 1,
@@ -30,6 +45,11 @@ const Quiz: React.FC = () => {
 					},
 				]}/>
 		</QuizWrapper>
+	) : (
+		<LoadingScreen shouldClose={finished} closeCallback={() => {
+			changeLoadState(false);
+			changeFinish(false);
+		}}/>
 	)
 };
 
