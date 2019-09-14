@@ -15,18 +15,22 @@ const Main: React.FC<Props> = ({
 	const [ticket, changeTicket] = useState('');
 
 	const goToGame = () => {
-		// if (!nickname || ticket.length !== 10) {
-		// 	return;
-		// }
+		if (!nickname || ticket.length !== 11) {
+			return;
+		}
 
 		history.push('/game');
 	};
 
+	const validateNickname = (nickname: string) => nickname.length <= 12;
+
+	const validateTicket = (ticket: string) => ticket.length <= 11;
+
 	return (
 		<MainWrapper>
-			<TextInput value={nickname} onChange={e => changeNickname(e.target.value)} type="text" placeholder="Nickname"/>
-			<TextInput value={ticket} onChange={e => changeTicket(e.target.value.toUpperCase())} type="text" placeholder="Ticket ID"/>
-			<Button label="->" onClick={goToGame}/>
+			<TextInput width="70%" value={nickname} onChange={e => validateNickname(e.target.value) && changeNickname(e.target.value)} type="text" placeholder="Nickname"/>
+			<TextInput width="70%" value={ticket} onChange={e => validateTicket(e.target.value) && changeTicket(e.target.value.toUpperCase())} type="text" placeholder="Ticket ID"/>
+			<Button padding="10px 0" width="70%" label="PLAY" onClick={goToGame}/>
 		</MainWrapper>
 	)
 };

@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
+interface TextInputWrapperProps {
+	width?: string
+}
 
-export const TextInputWrapper = styled.div`
+export const TextInputWrapper = styled.div<TextInputWrapperProps>`
 	position: relative;
-	widtht:70%;
-	padding:5px
+	width: ${props => props.width || 'auto'};
+	padding: 5px
 	margin-bottom: 8px;
 	& > input {
 		background: none;
@@ -14,6 +17,7 @@ export const TextInputWrapper = styled.div`
 		padding: 0 4px 4px;
 		outline: 0;
 		font-family: inherit;
+		text-align: center;
 		&::placeholder {
 			color: ${props => props.theme.lightGray};
 			opacity: 0.9;

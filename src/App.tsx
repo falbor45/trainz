@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './theme/theme.color';
 import TopBar from "./common/TopBar";
 import Game from "./views/Game/Game";
+import BottomBar from "./common/BottomBar";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
 					<TopBar/>
 					<Route path="/" exact component={Main}/>
 					<Route path="/game" component={Game}/>
+					<BottomBar/>
 				</Router>
 			</Provider>
 		</ThemeProvider>

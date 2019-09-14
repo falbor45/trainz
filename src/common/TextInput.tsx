@@ -5,17 +5,19 @@ interface Props {
 	type: string
 	value: string
 	onChange: (e: any) => void,
-	placeholder?: string
+	placeholder?: string,
+	width?: string
 }
 
 const TextInput: React.FC<Props> = ({
 	type,
 	value,
 	onChange,
-	placeholder
+	placeholder,
+	width
 }: Props) => {
 	return (
-		<TextInputWrapper>
+		<TextInputWrapper width={width}>
 			<input value={value} onChange={onChange} type={type} placeholder={placeholder}/>
 		</TextInputWrapper>
 	)
