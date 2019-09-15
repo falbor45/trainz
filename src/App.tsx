@@ -10,21 +10,25 @@ import Game from "./views/Game/Game";
 import BottomBar from "./common/BottomBar";
 import Quiz from "./views/Quiz/Quiz";
 import Ranking from "./views/Ranking/Ranking";
+import WebsocketProvider from "./common/WebsocketProvider";
 
 const App: React.FC = () => {
+
   return (
-  	<ThemeProvider theme={theme}>
-			<Provider store={store}>
-				<Router>
-					<TopBar/>
-					<Route path="/" exact component={Main}/>
-					<Route path="/game" component={Game}/>
-					<Route path="/quiz" component={Quiz}/>
-					<Route path="/ranking" component={Ranking}/>
-					<BottomBar/>
-				</Router>
-			</Provider>
-		</ThemeProvider>
+  	<WebsocketProvider>
+			<ThemeProvider theme={theme}>
+				<Provider store={store}>
+					<Router>
+						<TopBar/>
+						<Route path="/" exact component={Main}/>
+						<Route path="/game" component={Game}/>
+						<Route path="/quiz" component={Quiz}/>
+						<Route path="/ranking" component={Ranking}/>
+						<BottomBar/>
+					</Router>
+				</Provider>
+			</ThemeProvider>
+		</WebsocketProvider>
   );
 };
 

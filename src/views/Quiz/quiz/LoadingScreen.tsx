@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LoadingScreenWrapper } from "./LoadingScreen.style";
 import ActivityIndicator from "../../../common/ActivityIndicator";
-import {Simulate} from "react-dom/test-utils";
 
 interface Props {
 	shouldClose: boolean
@@ -21,7 +20,7 @@ const LoadingScreen: React.FC<Props> = ({
 				closeCallback();
 			}, 500)
 		}
-	}, [shouldClose]);
+	}, [shouldClose, closeCallback]);
 	return (
 		<LoadingScreenWrapper isClosing={isClosing}>
 			<div></div>
