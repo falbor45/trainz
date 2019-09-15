@@ -5,20 +5,20 @@ export const getGlobalRankingR = () => MOCK_fakeFetch({
 		leaderboard: [
 			{
 				id: 1,
-				username: 'PussyHunter15',
+				username: 'User 1',
 				points: 987560,
 				position: 1
 			},
 			{
 				id: 2,
-				username: 'DogFighta',
+				username: 'User 2',
 				points: 78329,
 				position: 2
 
 			},
 			{
 				id: 3,
-				username: 'exxTended',
+				username: 'User 3',
 				points: 2199,
 				position: 3
 
@@ -26,7 +26,7 @@ export const getGlobalRankingR = () => MOCK_fakeFetch({
 		],
 		me: {
 			id: 98,
-			username: 'ME user',
+			username: 'ME',
 			points: 1,
 			position: 13
 		}

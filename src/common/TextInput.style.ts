@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 interface TextInputWrapperProps {
 	width?: string
-	focused: boolean
+	focused: boolean,
+	hasError: boolean
 }
 
 export const TextInputWrapper = styled.div<TextInputWrapperProps>`
@@ -18,6 +19,26 @@ export const TextInputWrapper = styled.div<TextInputWrapperProps>`
 		margin: 0 auto;
 		transition: .25s;
 		pointer-events: none;
+		color: ${props => props.hasError && '#FF0000'};
+	}
+	& > img {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 8px;
+	}
+	& > div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: calc(100% - 40px);
+		text-align: center;
+		height: 100%;
+		background: ${props => props.theme.white};
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #FF0000;
 	}
 	& > input {
 		width: 100%;
@@ -25,7 +46,7 @@ export const TextInputWrapper = styled.div<TextInputWrapperProps>`
 		border: none;
 		color: ${props => props.theme.lightGray};
 		font-size: 20px;
-		padding: 12px 4px 4px;
+		padding: 12px 20px 4px 4px;
 		outline: 0;
 		font-family: inherit;
 		text-align: center;

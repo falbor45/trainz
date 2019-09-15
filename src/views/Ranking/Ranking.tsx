@@ -7,13 +7,17 @@ import ActivityIndicator from '../../common/ActivityIndicator';
 interface Props {
 	getGlobalRanking: any,
 	leaderboard: any,
-	myPosition: any
+	myPosition: any,
+	accPoints: number,
+	nickname: string
 }
 
 const Ranking: React.FC<Props> = ({
 	getGlobalRanking,
 	leaderboard,
-	myPosition
+	myPosition,
+	nickname,
+	accPoints
 }: Props) => {
 	useEffect(() => {
 		getGlobalRanking();
@@ -39,8 +43,8 @@ const Ranking: React.FC<Props> = ({
 							myPosition && (
 								<div>
 									<div>
-										<span>{myPosition.username}</span>
-										<span>{myPosition.points} Pts</span>
+										<span>{nickname}</span>
+										<span>{accPoints} Pts</span>
 									</div>
 									<img src={shieldIcon} alt=""/>
 									<span>{myPosition.position}</span>
@@ -56,7 +60,9 @@ const Ranking: React.FC<Props> = ({
 
 const mapState = (state: any) => ({
 	leaderboard: state.rankingModel.leaderboard,
-	myPosition: state.rankingModel.me
+	myPosition: state.rankingModel.me,
+	nickname: state.generalModel.nickname,
+	accPoints: state.questionsModel.accPoints
 });
 
 const mapDispatch = (dispatch: any) => ({
