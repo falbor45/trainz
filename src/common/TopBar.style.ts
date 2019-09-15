@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const TopBarWrapper = styled.div`
+interface TopBarWrapperProps {
+	backVisible: boolean
+}
+
+export const TopBarWrapper = styled.div<TopBarWrapperProps>`
 	height: calc(10vh + 3px);
 	min-height: 64px;
 	width: 100vw;
@@ -14,8 +18,8 @@ export const TopBarWrapper = styled.div`
 		left: 8px;
 	}
 	& > img:last-child {
-		left: initial;
-		right: 8px;
+		left: ${props => props.backVisible && 'initial'};
+		right: ${props => props.backVisible && '8px'};
 	}
 	&:after {
 		content: '';

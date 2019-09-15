@@ -29,10 +29,17 @@ const TopBar: React.FC<Props> = ({
 		}
 		history.push(dic[path]);
 	};
+
+	const isBackVisible = !['/quiz'].includes(history.location.pathname);
+
 	return (
-		<TopBarWrapper>
+		<TopBarWrapper backVisible={isBackVisible}>
 			<img src={brandLogo} alt=""/>
-			<img src={backIcon} alt="" onClick={() => redirect(history.location.pathname)}/>
+			{
+				 isBackVisible && (
+					<img src={backIcon} alt="" onClick={() => redirect(history.location.pathname)}/>
+				)
+			}
 		</TopBarWrapper>
 	)
 };
