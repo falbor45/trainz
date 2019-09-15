@@ -13,7 +13,6 @@ export const ButtonWrapper = styled.button<ButtonWrapperPropsI>`
 	transition: .125s;
 	font-family: inherit;
 	font-size: 20px;
-	cursor: pointer;
 	margin: ${props => props.margin || '8px 0'};
 	padding: ${props => props.padding || '3px 15px'};
 	width: ${props => props.width || 'auto'};

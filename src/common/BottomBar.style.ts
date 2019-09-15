@@ -35,7 +35,6 @@ export const BottomBarItem = styled.div<BottomBarItemProps>`
 	height: 10vh;
 	transition: ${transitionTime};
 	position: relative;
-	cursor: pointer;
 	color: ${props => props.theme.white};
 	
 	& > div {
