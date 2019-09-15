@@ -14,13 +14,16 @@ const LoadingScreen: React.FC<Props> = ({
 	const [isClosing, changeCloseState] = useState(false);
 
 	useEffect(() => {
+		let timeout: any;
 		if (shouldClose) {
 			changeCloseState(true);
-			setTimeout(() => {
+			timeout = setTimeout(() => {
 				closeCallback();
 			}, 500)
 		}
+		return () => clearTimeout(timeout);
 	}, [shouldClose, closeCallback]);
+
 	return (
 		<LoadingScreenWrapper isClosing={isClosing}>
 			<div></div>
