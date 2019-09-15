@@ -5,12 +5,20 @@ interface answer {
 	answerText: string
 	id: number
 	questionId: number,
+	answerId: number
+	AnswerText: string
+	AnswerId: number
+}
+
+interface question {
+	questionText: string
+	questionId: number
 }
 
 interface Props {
-	question: string,
+	question: question,
 	answers: [answer, answer, answer, answer]
-	onAnswer: () => void
+	onAnswer: any
 }
 
 const Question: React.FC<Props> = ({
@@ -20,12 +28,15 @@ const Question: React.FC<Props> = ({
 }: Props) => {
 	return (
 		<QuestionWrapper>
-			<span>{question}</span>
+			<span>{question.questionText}</span>
 			<div>
 				{
 					answers.map(answer => (
-						<div key={answer.answerText} onClick={onAnswer}>
-							<span>{answer.answerText}</span>
+						<div key={answer.answerText} onClick={() => onAnswer({
+							questionId: question.questionId,
+							answerId: answer.answerId || answer.AnswerId
+						})}>
+							<span>{answer.answerText || answer.AnswerText}</span>
 						</div>
 					))
 				}

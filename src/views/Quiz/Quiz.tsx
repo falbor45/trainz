@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { QuizWrapper } from './Quiz.style';
 import Question from "./quiz/Question";
 import LoadingScreen from "./quiz/LoadingScreen";
+import {WebsocketContext} from "../../common/WebsocketProvider";
 
 const Quiz: React.FC<any> = ({
 	currentQuestion,
@@ -12,6 +13,18 @@ const Quiz: React.FC<any> = ({
 	const [isLoading, changeLoadState] = useState(true);
 	const [finished, changeFinish] = useState(false);
 	const [questionStart, changeQuestionStart] = useState(Date.now());
+
+	const client = useContext(WebsocketContext);
+
+	const checkQuestion = ({ questionId, answerId }: any) => {
+		const obj = {
+			questionId,
+			answerId,
+			token: 'FO'
+		};
+
+		client.send(JSON.stringify(obj));
+	};
 
 	useEffect(() => {
 		getInitialQuestion()
@@ -23,11 +36,8 @@ const Quiz: React.FC<any> = ({
 			{
 				currentQuestion && (
 					<Question
-						question={currentQuestion.questionText}
-						onAnswer={() => {
-							incrementPoints(Math.floor(1000 - ((Date.now() - questionStart) / 10)));
-							changeLoadState(!isLoading)
-						}}
+						question={currentQuestion}
+						onAnswer={checkQuestion}
 						answers={currentQuestion.answers}/>
 				)
 			}

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import {isJSON} from "./_utils/helpers";
+import { dispatch } from '../store';
 
 interface Props {
 	children: any
@@ -15,6 +16,12 @@ const WebsocketProvider: React.FC<Props> = ({
 	client.onopen = () => console.log('ws open');
 
 	client.onmessage = message => {
+		const _data = isJSON(message.data) ? JSON.parse(message.data) : message.data;
+
+		if (typeof _data !== 'string') {
+			dispatch.questionsModel.changeQuestion(_data);
+		}
+
 		console.log({
 			...message,
 			data: isJSON(message.data) ? JSON.parse(message.data) : message.data
