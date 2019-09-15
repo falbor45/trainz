@@ -9,7 +9,7 @@ export const WebsocketContext = React.createContext<any>(42);
 const WebsocketProvider: React.FC<Props> = ({
 	children
 }: Props) => {
-	const client = new WebSocket('ws://trainquiz-backend.azurewebsites.net');
+	const client = new WebSocket('wss://trainquiz-backend.azurewebsites.net');
 
 	client.onopen = () => console.log('ws open');
 
