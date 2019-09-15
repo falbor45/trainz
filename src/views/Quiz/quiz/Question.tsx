@@ -2,7 +2,7 @@ import React from 'react';
 import { QuestionWrapper } from './Question.style';
 
 interface answer {
-	text: string
+	answerText: string
 	id: number
 	questionId: number,
 }
@@ -24,8 +24,8 @@ const Question: React.FC<Props> = ({
 			<div>
 				{
 					answers.map(answer => (
-						<div onClick={onAnswer}>
-							<span>{answer.text}</span>
+						<div key={answer.answerText} onClick={onAnswer}>
+							<span>{answer.answerText}</span>
 						</div>
 					))
 				}

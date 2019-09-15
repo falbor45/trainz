@@ -1,49 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { QuizWrapper } from './Quiz.style';
 import Question from "./quiz/Question";
 import LoadingScreen from "./quiz/LoadingScreen";
 
-const Quiz: React.FC = () => {
-	const [isLoading, changeLoadState] = useState(false);
+const Quiz: React.FC<any> = ({
+	currentQuestion,
+	getInitialQuestion,
+	incrementPoints
+}) => {
+	const [isLoading, changeLoadState] = useState(true);
 	const [finished, changeFinish] = useState(false);
+	const [questionStart, changeQuestionStart] = useState(Date.now());
 
 	useEffect(() => {
-		let timeout: any;
-		if (isLoading) {
-			timeout = setTimeout(() => {
-				changeFinish(true);
-			}, 5000 + (Math.floor(Math.random() * 5000)));
-		}
-		return () => clearTimeout(timeout);
-	}, [isLoading]);
+		getInitialQuestion()
+			.finally(() => changeLoadState(false));
+	}, []);
 
 	return !isLoading ? (
 		<QuizWrapper>
-			<Question
-				question="Who is the best duud?"
-				onAnswer={() => changeLoadState(!isLoading)}
-				answers={[
-					{
-						id: 1,
-						text: 'Me',
-						questionId: 1
-					},
-					{
-						id: 2,
-						text: 'You',
-						questionId: 1
-					},
-					{
-						id: 3,
-						text: 'Trivago',
-						questionId: 1
-					},
-					{
-						id: 4,
-						text: 'John Wick',
-						questionId: 1
-					},
-				]}/>
+			{
+				currentQuestion && (
+					<Question
+						question={currentQuestion.questionText}
+						onAnswer={() => {
+							incrementPoints(Math.floor(1000 - ((Date.now() - questionStart) / 10)));
+							changeLoadState(!isLoading)
+						}}
+						answers={currentQuestion.answers}/>
+				)
+			}
 		</QuizWrapper>
 	) : (
 		<LoadingScreen shouldClose={finished} closeCallback={() => {
@@ -53,4 +40,16 @@ const Quiz: React.FC = () => {
 	)
 };
 
-export default Quiz;
+const mapState = (state: any) => ({
+	currentQuestion: state.questionsModel.currentQuestion
+});
+
+const mapDispatch = (dispatch: any) => ({
+	getInitialQuestion: dispatch.questionsModel.getInitialQuestion,
+	incrementPoints: dispatch.questionsModel.incrementPoints
+});
+
+export default connect(
+	mapState,
+	mapDispatch
+)(Quiz);

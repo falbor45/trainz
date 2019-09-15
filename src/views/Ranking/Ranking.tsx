@@ -1,9 +1,8 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { RankingWrapper, Leaderboard } from './Ranking.style';
 import { connect } from 'react-redux';
 import {firstPlaceIcon, secondPlaceIcon, shieldIcon, thirdPlaceIcon} from "../../assets";
 import ActivityIndicator from '../../common/ActivityIndicator';
-import {WebsocketContext} from "../../common/WebsocketProvider";
 
 interface Props {
 	getGlobalRanking: any,
@@ -19,16 +18,6 @@ const Ranking: React.FC<Props> = ({
 	useEffect(() => {
 		getGlobalRanking();
 	}, [getGlobalRanking]);
-
-	const socket = useContext(WebsocketContext);
-
-	if (socket.readyState === 1) {
-		socket.send("dupaa");
-	}
-
-	socket.onmessage = (message: string) => console.log(message);
-
-
 
 	return (
 		<RankingWrapper>

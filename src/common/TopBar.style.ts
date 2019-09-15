@@ -21,6 +21,13 @@ export const TopBarWrapper = styled.div<TopBarWrapperProps>`
 		left: ${props => props.backVisible && 'initial'};
 		right: ${props => props.backVisible && '8px'};
 	}
+	& > span {
+		font-weight: 20px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 8px;
+	}
 	&:after {
 		content: '';
   	position: absolute;

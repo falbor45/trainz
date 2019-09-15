@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { TopBarWrapper } from "./TopBar.style";
 import {backIcon, brandLogo} from '../assets';
 import { History } from "history";
@@ -6,6 +7,7 @@ import {withRouter} from "react-router";
 
 interface Props {
 	history: History,
+	accPoints: number
 }
 
 interface dicI {
@@ -19,7 +21,8 @@ const dic: dicI = {
 };
 
 const TopBar: React.FC<Props> = ({
-	history
+	history,
+	accPoints
 }: Props) => {
 
 	const redirect = (path: string) => {
@@ -40,8 +43,27 @@ const TopBar: React.FC<Props> = ({
 					<img src={backIcon} alt="" onClick={() => redirect(history.location.pathname)}/>
 				)
 			}
+			{
+				history.location.pathname === '/quiz' && (
+					<span>{accPoints} Pts</span>
+				)
+			}
 		</TopBarWrapper>
 	)
 };
 
-export default withRouter(TopBar);
+const mapState = (state: any) => ({
+	accPoints: state.questionsModel.accPoints
+});
+
+const mapDispatch = (dispatch: any) => ({
+
+});
+
+export default withRouter(
+	// @ts-ignore
+	connect(
+		mapState,
+		mapDispatch
+	)(TopBar)
+);

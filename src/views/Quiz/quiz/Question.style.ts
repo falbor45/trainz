@@ -21,6 +21,7 @@ export const QuestionWrapper = styled.div`
 			box-shadow: 2px 2px 1px darkviolet;
 			transition: transform .125s;
 			font-size: 18px;
+			text-align: center;
 			&:hover {
 				transform: scale(1.05);
 			}
